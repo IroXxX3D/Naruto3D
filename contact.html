@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="contact.css">
+  <link rel="icon" href="image/icon site.png">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet" />
+  <title>contact</title>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script type="text/javascript">
+    (function () {
+      // https://dashboard.emailjs.com/admin/account
+      emailjs.init('6fkusvltowbbRz5cY');
+    })();
+  </script>
+  <script type="text/javascript">
+    window.onload = function () {
+      document.getElementById('contact-form').addEventListener('submit', function (event) {
+        event.preventDefault();
+        emailjs.sendForm('service_5f59te9', 'template_s5o7atu', event.target)
+          .then(function () {
+            console.log('SUCCESS!');
+            alert("Votre message a bien été envoyé !")
+          }, function (error) {
+            console.log('FAILED...', error);
+          });
+      });
+    }
+  </script>
+</head>
+
+<body>
+  <section class="header-section">
+    <div class="container">
+      <header class="navabar">
+        <div class="logo">
+          <img class="logo_resp" src="image\logo.JPG" alt="logo">
+        </div>
+        <nav>
+          <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="produits.html">Produits</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="live.html">Live</a></li>
+            <li><a href="apropot.html">A propos</a></li>
+            <li> <a href="panier.html"><img src="image/cart.png" height="26px" /></a></li>
+          </ul>
+        </nav>
+      </header>
+    </div>
+  </section>
+
+  <form id="contact-form">
+    <h1>Contactez-nous</h1>
+    <div class="separation"></div>
+    <div class="corps-formulaire">
+      <div class="gauche">
+        <div class="groupe">
+          <label>Votre Prénom</label>
+          <input name="name" type="text" required />
+          <i class="fas fa-user"></i>
+        </div>
+        <div class="groupe">
+          <label>Votre adresse e-mail</label>
+          <input name="email" type="email" required />
+          <i class="fas fa-envelope"></i>
+        </div>
+        <div class="groupe">
+          <label>Votre téléphone</label>
+          <input name="phone" type="tel" />
+          <i class="fas fa-mobile"></i>
+        </div>
+      </div>
+
+      <div class="droite">
+        <div class="groupe">
+          <label>Message</label>
+          <textarea name="message" required placeholder="Saisissez ici..."></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="pied-formulaire" align="center">
+      <input type="submit" value="Envoyer">
+    </div>
+  </form>
+</body>
+
+</html>
